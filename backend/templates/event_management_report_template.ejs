@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Event Management Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Management Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Required Skills</th>
+                <th>Urgency</th>
+                <th>Event Date</th>
+                <th>Full Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(function(record) { %>
+                <tr>
+                    <td><%= record.event_name %></td>
+                    <td><%= record.description %></td>
+                    <td><%= record.location %></td>
+                    <td><%= record.required_skills %></td>
+                    <td><%= record.urgency %></td>
+                    <td><%= record.event_date %></td>
+                    <td><%= record.full_name %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

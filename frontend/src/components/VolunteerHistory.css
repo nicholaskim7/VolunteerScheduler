@@ -1,0 +1,26 @@
+.volunteer-history {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .volunteer-history h2 {
+    margin-bottom: 20px;
+  }
+  
+  .volunteer-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .volunteer-table th,
+  .volunteer-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .volunteer-table th {
+    background-color: #f2f2f2;
+  } 

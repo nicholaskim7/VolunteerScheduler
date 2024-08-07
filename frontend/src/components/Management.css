@@ -1,0 +1,36 @@
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+textarea {
+  width: 400px;
+  display: flex;
+}
+
+input[type="text"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  /* width: 300px; */
+}
+
+.input-group-text{
+  height: 40px;
+  cursor: pointer;
+}

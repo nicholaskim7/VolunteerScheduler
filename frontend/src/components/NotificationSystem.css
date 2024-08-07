@@ -1,0 +1,17 @@
+.notification-system {
+  padding: 20px;
+}
+
+.notification-system h2 {
+  margin-bottom: 10px;
+}
+
+.notification-system ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notification-system .error {
+  color: red;
+  margin-top: 10px;
+}

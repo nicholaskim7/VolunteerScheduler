@@ -1,0 +1,28 @@
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.notification p {
+  margin: 0;
+  flex: 1;
+}
+
+.notification button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.notification button:hover {
+  background-color: #d32f2f;
+}
