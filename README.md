@@ -60,4 +60,4 @@ This document provides an overview of the various frontend views for the project
 
 ---
 
-Feel free to explore each view through the provided screenshots to get a visual understanding of the application's frontend interface.
+Still working on test file, updated database schema with correct types and lengths.
