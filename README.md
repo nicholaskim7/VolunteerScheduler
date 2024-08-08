@@ -22,7 +22,7 @@ This document provides an overview of the various frontend views for the project
 
 ## Update User Profile
 
-- **Functionality:** Components for updating user profile data, with self-explanatory interface elements.
+- **Functionality:** Components for updating user profile data, with self-explanatory interface elements. Logout will clear tokens generated upon login.
 - **Screenshot:**
   ![Update User Profile](https://github.com/user-attachments/assets/3fcfbbbf-d15b-4104-9128-9a4f3595ed14)
 
