@@ -45,6 +45,13 @@ This document provides an overview of the various frontend views for the project
 - **Screenshot:**
   ![Admin Create New Event](https://github.com/user-attachments/assets/bfa1591d-cf47-46e6-83e0-7198c3aef862)
 
+## Notification upon being matched to event by Admin
+
+- **Functionality:** notification popup on volunteer profile and dismissal.
+- **Screenshot:**
+  ![notification](https://github.com/user-attachments/assets/1aaee248-880a-4c97-b95b-ede3a1fba30c)
+
+
 ## Generate Reports
 
 - **Functionality:** Generate reports for volunteer activity and event management.
