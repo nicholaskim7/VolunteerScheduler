@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import './Theme.css';
 
 function UpdateEvent() {
     const [matchedEvent, setMatchedEvent] = useState(''); // We will set the matchedEvent value by using the event_id
@@ -20,19 +21,19 @@ function UpdateEvent() {
     };
 
   return (
-    <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-        <div className='w-50 bg-white rounded p-3'>
+    <div className='d-flex vh-100 bg-green justify-content-center align-items-center'>
+        <div className='w-50 custom-box rounded p-3'>
             <form onSubmit={handleSubmit}>
                 <h2>Match Event for {full_name}</h2>
                 <div className='mb-2'>
                     <label htmlFor="">Event ID</label>
-                    <input type="text" placeholder = 'Enter event ID' className='form-control'
+                    <input type="text" placeholder = 'Enter event ID' className='form-control custom-box'
                     onChange={e => setMatchedEvent(e.target.value)}
                     />
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Participation</label>
-                    <input type="text" placeholder = 'Enter event Participation' className='form-control'
+                    <input type="text" placeholder = 'Enter event Participation' className='form-control custom-box'
                     onChange={e => setParticipation(e.target.value)}
                     />
                 </div>

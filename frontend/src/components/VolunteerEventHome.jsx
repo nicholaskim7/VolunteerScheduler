@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
+import './Theme.css';
 
 // Added to frontend GitHub
 
@@ -58,9 +59,9 @@ function VolunteerEventHome() {
 
 
     return (
-        <div className='d-flex flex-column vh-100 bg-secondary justify-content-center align-items-center'>
-            <div className='bg-white rounded p-3 mb-4'>
-                <table className='table'>
+        <div className='d-flex flex-column vh-100 bg-green justify-content-center align-items-center'>
+            <div className='custom-box rounded p-3 mb-4'>
+                <table className='volunteer-table'>
                     <thead>
                         <header style={{ fontWeight: 'bold' }}>Volunteer</header>
                         <tr>
@@ -88,7 +89,7 @@ function VolunteerEventHome() {
                                     <td>{data.preferences}</td>
                                     <td>{formatAvailability(data.availability)}</td>
                                     <td>
-                                        <Link to={`match/${data.user_id}/${data.full_name}`} className='btn btn-primary'>Match</Link>
+                                        <Link to={`match/${data.user_id}/${data.full_name}`} className='btn btn-success'>Match</Link>
                                     </td>
                                 </tr>
                             ))
@@ -96,8 +97,8 @@ function VolunteerEventHome() {
                     </tbody>
                 </table>
             </div>
-            <div className='bg-white rounded p-3'>
-                <table className='table'>
+            <div className='custom-box rounded p-3'>
+                <table className='volunteer-table'>
                     <thead>
                         <header style={{ fontWeight: 'bold' }}>Event</header>
                         <tr>

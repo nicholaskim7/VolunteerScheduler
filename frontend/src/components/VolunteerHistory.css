@@ -1,8 +1,10 @@
 .volunteer-history {
     padding: 20px;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    background-color: #d3d7df7a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .volunteer-history h2 {
@@ -22,5 +24,5 @@
   }
   
   .volunteer-table th {
-    background-color: #f2f2f2;
+    background-color: #bbbfc586;
   } 

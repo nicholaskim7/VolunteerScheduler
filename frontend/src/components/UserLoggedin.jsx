@@ -4,6 +4,8 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import NotificationSystem from './NotificationSystem';
+import VolunteerHistory from './VolunteerHistory';
+import './Theme.css';
 
 function UserLoggedin() {
   const [auth, setAuth] = useState(false);
@@ -60,9 +62,8 @@ function UserLoggedin() {
     <div>
       {
         auth ? 
-          <div className='d-flex flex-column align-items-center'>
+          <div className='d-flex flex-column align-items-center bg-green'>
             <h3>You are Authorized --- {id}</h3>
-            {id && <NotificationSystem userId={id} />} {/* Render NotificationSystem only when id is available */}
             <div className='mt-4'>
               <div className="dropdown" style={{ position: 'absolute', top: '9px', right: '30px' }}>
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,7 +77,7 @@ function UserLoggedin() {
                 </ul>
               </div>
             </div>
-            <div className='mt-4 w-50 bg-light rounded p-3'>
+            <div className='mt-4 custom-box w-50 rounded p-3'>
               <h2>@{user.username}</h2>
               {user.profile_picture && <img src={`http://localhost:8081${user.profile_picture}`} alt="Profile" width="150" height="140" className='mb-3' style={{ borderRadius: '50%' }} />}
               <div className='mb-2'>
@@ -106,6 +107,13 @@ function UserLoggedin() {
               <div className='mb-2'>
                 <strong>Availability:</strong> {formatAvailability(user.availability)}
               </div>
+            </div>
+            <div className='mt-4'>
+              {id && <NotificationSystem userId={id} />} {/* Render NotificationSystem only when id is available */}
+            </div>
+            <div className='mt-4'>
+              {/* Render the VolunteerHistory component with userId prop */}
+              <VolunteerHistory userId={id} />
             </div>
           </div>
         : 

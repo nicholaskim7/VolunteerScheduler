@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "./Theme.css"
 
 function ReportingModule() {
     const[reportType, setReportType] = useState('volunteer-activity')
@@ -35,7 +36,7 @@ function ReportingModule() {
     
 
     return (
-        <div>
+        <div className='bg-green'>
             <h1>Generate Report</h1>
             <div>
                 <label>

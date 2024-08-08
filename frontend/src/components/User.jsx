@@ -2,6 +2,7 @@ import react, { useEffect, useState } from 'react'
 import React from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import './Theme.css';
 
 function User() {
     const [user, setUser] = useState([])
@@ -24,11 +25,11 @@ function User() {
     }
 
   return (
-    <div className='d-flex vh-100 bg-success justify-content-center align-items-center'>
-        <div className='w-50 bg-white rounded p-3'>
+    <div className='d-flex vh-100 bg-green justify-content-center align-items-center'>
+        <div className='w-50 custom-box rounded p-3'>
             <h4>Temporary to see new users being added</h4>
             <Link to="/create" className='btn btn-success'>New User</Link>
-            <table className='table'>
+            <table className='volunteer-table'>
                 <thead>
                     <tr>
                         <th>Name</th>

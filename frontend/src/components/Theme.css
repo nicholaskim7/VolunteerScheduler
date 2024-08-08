@@ -1,0 +1,28 @@
+.bg-green {
+    background-color: rgb(92, 126, 111);
+    /* background-color: rgb(162, 225, 236); */
+    min-height: 100vh;
+}
+
+.custom-box {
+    background-color: #d3d7df7a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-box th, .custom-box td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.custom-box th {
+    background-color: #4CAF50; /* Change this to the color you want for the header */
+    color: rgb(0, 0, 0);
+}
+
+.custom-box tr:nth-child(even) {
+    background-color: #d3d7df7a
+}
+
+.custom-box tr:hover {
+    background-color: #dddddda1;
+}

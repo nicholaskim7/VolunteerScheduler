@@ -17,6 +17,7 @@ import UpdateEvent from './UpdateEvent';
 
 import VolunteerEventHome from './VolunteerEventHome';
 import MatchVolunteer from './MatchVolunteer';
+import VolunteerHistory from './VolunteerHistory.jsx';
 
 import ReportingModule from './ReportingModule.jsx';
 
@@ -62,6 +63,7 @@ function Bar() {
 
           <Route path='/volunteer-event-home' element={<VolunteerEventHome />}></Route>
           <Route path='/volunteer-event-home/match/:user_id/:full_name' element={<MatchVolunteer />}></Route>
+          <Route path='/volunteerHistory' element={<VolunteerHistory />}></Route>
             
           <Route path='/reports' element={<ReportingModule />}></Route>
         </Routes>

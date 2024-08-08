@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import './Theme.css';
 
 //changed to implement password hashing
 function Login() {
@@ -31,18 +32,18 @@ function Login() {
     }
 
   return (
-        <div className="d-flex vh-100 justify-content-center align-items-center bg-primary">
-            <div className="p-3 bg-white w-25">
+        <div className="d-flex vh-100 justify-content-center align-items-center bg-green">
+            <div className="p-3 custom-box w-25 rounded p-3">
                 <h2>Log in</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label htmlFor="email">Email</label>
-                        <input type="email" placeholder="Enter Email" className="form-control"
+                        <input type="email" placeholder="Enter Email" className="form-control custom-box"
                         onChange={e => setEmail(e.target.value)}/>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password">Password</label>
-                        <input type="password" placeholder="Enter Password" className="form-control"
+                        <input type="password" placeholder="Enter Password" className="form-control custom-box"
                         onChange={e => setPassword(e.target.value)}/>
                     </div>
                     <button className="btn btn-success">Login</button>

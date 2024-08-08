@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import './Theme.css';
 
 //changed to add password hashing
 function CreateUser() {
@@ -28,25 +29,25 @@ function CreateUser() {
     }
 
   return (
-    <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-        <div className='w-50 bg-white rounded p-3'>
+    <div className='d-flex vh-100 bg-green justify-content-center align-items-center'>
+        <div className='w-50 custom-box rounded p-3'>
             <form onSubmit={handleSubmit}>
                 <h2>Add User</h2>
                 <div className='mb-2'>
                     <label htmlFor="">Name</label>
-                    <input type="text" placeholder='Enter Name' className='form-control'
+                    <input type="text" placeholder='Enter Name' className='form-control custom-box'
                     onChange={e => setName(e.target.value)}
                     />
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Email</label>
-                    <input type="email" placeholder='Enter Email' className='form-control'
+                    <input type="email" placeholder='Enter Email' className='form-control custom-box'
                     onChange={e => setEmail(e.target.value)}
                     />
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Password</label>
-                    <input type="text" placeholder='Enter Password' className='form-control'
+                    <input type="text" placeholder='Enter Password' className='form-control custom-box'
                     onChange={e => setPassword(e.target.value)}
                     />
                 </div>

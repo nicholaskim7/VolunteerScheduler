@@ -1,6 +1,7 @@
 import  React, {useEffect, useState } from 'react'
 import axios  from 'axios'
 import { Link } from 'react-router-dom'
+import './Theme.css';
 
 function Event() {
     const [event, setEvent] = useState([])
@@ -46,10 +47,11 @@ function Event() {
     };
 
     return (
-        <div data-testid = "todo-1" className='d-flex vh-100 bg-secondary justify-content-center align-items-center'>
-            <div className='bg-white rounded p-3'>
-                <Link to='/events/create' className='btn btn-success'>Add +</Link>
-                <table className='table'>
+        <div data-testid = "todo-1" className='d-flex vh-100 bg-green justify-content-center align-items-center'>
+            <div className='custom-box rounded p-3'>
+                <Link to='/events/create' className='btn btn-success' style={{ marginRight: '10px' }}>Create Event</Link>
+                <Link to='/volunteer-event-home' className='btn btn-success'>Match with Volunteer</Link>
+                <table className='volunteer-table custom-box'>
                     <thead>
                         <tr>
                             <th>Name</th>

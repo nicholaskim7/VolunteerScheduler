@@ -464,71 +464,6 @@ app.get('/volunteerHistory', (req, res) => {
     });
 });
 
-// Pricing routes
-app.post('/pricing', (req, res) => {
-    const { name, description, price } = req.body;
-    if (!name || !price) return res.status(400).json({ error: 'Name and price are required' });
-
-    const query = 'INSERT INTO pricing (name, description, price) VALUES (?, ?, ?)';
-    db.query(query, [name, description, price], (error, results) => {
-        if (error) return res.status(500).json({ message: "Error creating pricing entry" });
-        res.status(201).json({ id: results.insertId, name, description, price });
-    });
-});
-
-// Pricing routes
-app.post('/pricing', (req, res) => {
-    const { name, description, price } = req.body;
-    if (!name || !price) return res.status(400).json({ error: 'Name and price are required' });
-
-    const query = 'INSERT INTO pricing (name, description, price) VALUES (?, ?, ?)';
-    db.query(query, [name, description, price], (error, results) => {
-        if (error) return res.status(500).json({ message: "Error creating pricing entry" });
-        res.status(201).json({ id: results.insertId, name, description, price });
-    });
-});
-
-app.get('/pricing', (req, res) => {
-    const query = 'SELECT * FROM pricing';
-    db.query(query, (error, results) => {
-        if (error) return res.status(500).json({ message: "Error retrieving pricing entries" });
-        res.json(results);
-    });
-});
-
-app.get('/pricing/:id', (req, res) => {
-    const { id } = req.params;
-    const query = 'SELECT * FROM pricing WHERE id = ?';
-    db.query(query, [id], (error, results) => {
-        if (error) return res.status(500).json({ error: error.message });
-        if (results.length === 0) return res.status(404).json({ message: "Pricing entry not found" });
-        res.json(results[0]);
-    });
-});
-
-app.put('/pricing/:id', (req, res) => {
-    const { id } = req.params;
-    const { name, description, price } = req.body;
-    if (!name || !price) return res.status(400).json({ message: 'Name and price are required' });
-
-    const query = 'UPDATE pricing SET name = ?, description = ?, price = ? WHERE id = ?';
-    db.query(query, [name, description, price, id], (error, results) => {
-        if (error) return res.status(500).json({ error: error.message });
-        if (results.affectedRows === 0) return res.status(404).json({ message: 'Pricing entry not found' });
-        res.json({ id, name, description, price });
-    });
-});
-
-app.delete('/pricing/:id', (req, res) => {
-    const { id } = req.params;
-    const query = 'DELETE FROM pricing WHERE id = ?';
-    db.query(query, [id], (error, results) => {
-        if (error) return res.status(500).json({ error: error.message });
-        if (results.affectedRows === 0) return res.status(404).json({ message: 'Pricing entry not found' });
-        res.status(204).send();
-    });
-});
-
 
 //generate volunteer activity reports
 app.get('/reports/volunteer-activity', async (req, res) => {
@@ -603,3 +538,5 @@ const generatePDFReport = (data, res, fileName, template) => {
 app.listen(8081, () => {
     console.log("Server is running on port 8081...");
 });
+
+module.exports = app;

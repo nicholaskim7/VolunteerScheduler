@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Multiselect } from 'multiselect-react-dropdown';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import './Theme.css'
 
 // Added to frontend GitHub
 
@@ -32,7 +33,7 @@ function UrgencyDropDown({ selectedUrgency, setSelectedUrgency }) {
 
     return (
         <div className="form-group">
-            <select className='form-select' value={selectedUrgency} onChange={setSelectedUrgency}>
+            <select className='form-select custom-box' value={selectedUrgency} onChange={setSelectedUrgency}>
                 {options.map(option => (
                     <option key={option.label} value={option.label}>{option.label}</option>
                 ))}
@@ -61,25 +62,25 @@ function CreateEvent() {
     }
 
   return (
-    <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-        <div className='w-50 bg-white rounded p-3'>
+    <div className='d-flex vh-100 bg-green justify-content-center align-items-center'>
+        <div className='w-50 custom-box rounded p-3'>
             <form onSubmit={handleSubmit}>
                 <h2>Add Event</h2>
                 <div className='mb-2'>
                     <label htmlFor="">Name</label>
-                    <input type="text" placeholder = 'Enter name' className='form-control'
+                    <input type="text" placeholder = 'Enter name' className='form-control custom-box'
                     onChange={e => setName(e.target.value)}
                     />
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Description</label>
-                    <input type="description" placeholder='Enter description' className='form-control'
+                    <input type="description" placeholder='Enter description' className='form-control custom-box'
                     onChange={e => setDescription(e.target.value)}
                     />
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Location</label>
-                    <input type="Location" placeholder='Enter Location' className='form-control'
+                    <input type="Location" placeholder='Enter Location' className='form-control custom-box'
                     onChange={e => setLocation(e.target.value)}
                     />
                 </div>
@@ -93,7 +94,7 @@ function CreateEvent() {
                 </div>
                 <div className='mb-2'>
                     <label htmlFor="">Date</label>
-                    <input type="Date" placeholder='Enter Date' className='form-control'
+                    <input type="Date" placeholder='Enter Date' className='form-control custom-box'
                     onChange={e => setDate(e.target.value)}
                     />
                 </div>
