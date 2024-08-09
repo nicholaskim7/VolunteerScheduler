@@ -14,7 +14,7 @@ function RequiredSkillsDropDown({ selectedSkills, setSelectedSkills }) {
     ];
 
     return (
-        <div className="form-group">
+        <div className="form-group custom-box">
             <Multiselect
                 options={options}
                 displayValue="skill"
@@ -36,7 +36,7 @@ function UrgencyDropDown({ selectedUrgency, setSelectedUrgency }) {
 
     return (
         <div className="form-group">
-            <select className='form-select' value={selectedUrgency} onChange={e => setSelectedUrgency(e.target.value)}>
+            <select className='form-select custom-box' value={selectedUrgency} onChange={e => setSelectedUrgency(e.target.value)}>
                 {options.map(option => (
                     <option key={option.key} value={option.label}>{option.label}</option>
                 ))}
@@ -82,21 +82,21 @@ function UpdateEvent() {
     }
 
     return (
-        <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-            <div className='w-50 bg-white rounded p-3'>
+        <div className='d-flex vh-100 bg-green justify-content-center align-items-center'>
+            <div className='w-50 custom-box rounded p-3'>
                 <form onSubmit={handleSubmit}>
                     <h2>Update Event</h2>
                     <div className='mb-2'>
                         <label>Name</label>
-                        <input type="text" placeholder='Enter name' className='form-control' value={name} onChange={e => setName(e.target.value)} />
+                        <input type="text" placeholder='Enter name' className='form-control custom-box' value={name} onChange={e => setName(e.target.value)} />
                     </div>
                     <div className='mb-2'>
                         <label>Description</label>
-                        <input type="text" placeholder='Enter description' className='form-control' value={description} onChange={e => setDescription(e.target.value)} />
+                        <input type="text" placeholder='Enter description' className='form-control custom-box' value={description} onChange={e => setDescription(e.target.value)} />
                     </div>
                     <div className='mb-2'>
                         <label>Location</label>
-                        <input type="text" placeholder='Enter location' className='form-control' value={location} onChange={e => setLocation(e.target.value)} />
+                        <input type="text" placeholder='Enter location' className='form-control custom-box' value={location} onChange={e => setLocation(e.target.value)} />
                     </div>
                     <div className='mb-2'>
                         <label>Required Skills</label>
@@ -108,7 +108,7 @@ function UpdateEvent() {
                     </div>
                     <div className='mb-2'>
                         <label>Date</label>
-                        <input type="date" placeholder='Enter date' className='form-control' value={date} onChange={e => setDate(e.target.value)} />
+                        <input type="date" placeholder='Enter date' className='form-control custom-box' value={date} onChange={e => setDate(e.target.value)} />
                     </div>
                     <button className='btn btn-success'>Submit</button>
                 </form>
