@@ -83,6 +83,18 @@ describe('API Endpoints', () => {
         userId = response.body.userId;
     });
 
+    it('should handle invalid input for user creation', async () => {
+        const response = await request(app)
+            .post('/create')
+            .send({
+                email: 'invalid-email',
+                password: 'short'
+            });
+    
+        expect(response.statusCode).toBe(400); 
+        expect(response.body.error).toBe('Missing required fields'); 
+    });
+
     it('should login the user and return a token', async () => {
         const response = await request(app)
             .post('/login')
@@ -112,6 +124,15 @@ describe('API Endpoints', () => {
         expect(response.statusCode).toBe(200);
         expect(response.body.Status).toBe('Success');
         expect(response.body.user.full_name).toBe('newest user');
+    });
+
+    it('should return an error if trying to fetch a profile with an invalid token', async () => {
+        const response = await request(app)
+            .get(`/user/${userId}`)
+            .set('Cookie', [`token=invalidtoken`]);
+    
+        expect(response.statusCode).toBe(200);
+        expect(response.body.message).toBe('Token is not ok');
     });
 
     it('should update user profile', async () => {
@@ -159,6 +180,18 @@ describe('API Endpoints', () => {
         expect(response.body.message).toBe('profile managed successfully');
     });
 
+    it('should handle missing user ID in profile management', async () => {
+        const response = await request(app)
+            .put(`/profile-management/`)
+            .set('Cookie', [`token=${token}`])
+            .send({
+                name: 'Missing UserID'
+            });
+    
+        expect(response.statusCode).toBe(404); 
+        expect(response.body.message).toBeUndefined();
+    });
+
     it('should logout the user', async () => {
         const response = await request(app)
             .get(`/user/${userId}/logout`)
@@ -177,9 +210,10 @@ describe('API Endpoints', () => {
         expect(response.body.message).toBe('User deleted successfully');
     });
 
+
     it('should match volunteer', async () => {
         const res = await request(app)
-            .put(`/volunteers/match/${45}`)
+            .put(`/volunteers/match/${87}`)
             .send({ event_id: 14, participation: 'Interested' });
     
         expect(res.statusCode).toBe(200);
@@ -189,12 +223,12 @@ describe('API Endpoints', () => {
     it('should get all events', async () => {
         const response = await request(app).get('/events');
         expect(response.statusCode).toBe(200);
-        expect(response.body).toBeInstanceOf(Array);  // Assuming it returns an array of events
+        expect(response.body).toBeInstanceOf(Array);  
     });
     
     it('should create a new event', async () => {
         const response = await request(app)
-            .post('/events/create') // Changed from GET to POST
+            .post('/events/create') 
             .send({
                 name: 'New Event',
                 description: 'New Description',
@@ -205,12 +239,12 @@ describe('API Endpoints', () => {
             });
     
         expect(response.statusCode).toBe(200);
-        expect(response.body.message).toBe("Created new event"); // Adjust to match the actual response
+        expect(response.body.message).toBe("Created new event"); 
     });
     
     it('should update an event', async () => {
         const response = await request(app)
-            .put(`/events/update/${45}`) // Ensure eventId is defined with an actual ID
+            .put(`/events/update/${45}`) 
             .send({
                 name: 'Updated Event',
                 description: 'Updated Description',
@@ -226,28 +260,102 @@ describe('API Endpoints', () => {
     
     it('should delete an event', async () => {
         const response = await request(app)
-            .delete(`/events/${45}`); // Ensure eventId is defined with an actual ID
+            .delete(`/events/${45}`); 
     
         expect(response.statusCode).toBe(200);
-        expect(response.body).toBeInstanceOf(Object);  // Adjust based on actual server response
+        expect(response.body).toBeInstanceOf(Object);  
     });
     
     it('should retrieve all volunteers', async () => {
         const response = await request(app).get('/volunteers');
         expect(response.statusCode).toBe(200);
-        expect(response.body).toBeInstanceOf(Array);  // Assuming it returns an array of volunteers
+        expect(response.body).toBeInstanceOf(Array);  
     });
     
     it('should retrieve notifications', async () => {
         const response = await request(app).get('/notifications').query({ userId });
         expect(response.statusCode).toBe(200);
-        expect(response.body).toBeInstanceOf(Array);  // Assuming it returns an array of notifications
+        expect(response.body).toBeInstanceOf(Array);  
+    });
+
+    it('should delete the notification successfully', async () => {
+        const response = await request(app)
+            .delete(`/notifications/${244}`)
+            .set('Cookie', [`token=${token}`])
+            .query({ userId });
+
+        expect(response.statusCode).toBe(204);
     });
     
     it('should retrieve volunteer history', async () => {
         const response = await request(app).get(`/volunteerHistory`).query({ user_id: 45 });
         expect(response.statusCode).toBe(200);
-        expect(response.body).toBeInstanceOf(Array);  // Assuming it returns an array of volunteer history
+        expect(response.body).toBeInstanceOf(Array);
     });
-});
 
+    it('should generate a CSV report for volunteer activity', async () => {
+        const response = await request(app)
+            .get('/reports/volunteer-activity')
+            .query({ format: 'csv' });
+
+        expect(response.statusCode).toBe(200);
+        expect(response.headers['content-type']).toBe('text/csv; charset=utf-8');
+        expect(response.headers['content-disposition']).toContain('attachment; filename="volunteer_activity_report.csv"');
+        expect(response.text).toContain('"full_name","participation","event_name"');
+    });
+
+    it('should generate a PDF report for volunteer activity', async () => {
+        const response = await request(app)
+            .get('/reports/volunteer-activity')
+            .query({ format: 'pdf' });
+
+        expect(response.statusCode).toBe(200);
+        expect(response.headers['content-type']).toBe('application/pdf');
+        expect(response.headers['content-disposition']).toContain('attachment; filename="volunteer_activity_report.pdf"');
+    });
+
+    it('should generate a CSV report for event management', async () => {
+        const response = await request(app)
+            .get('/reports/event-management')
+            .query({ format: 'csv' });
+
+        expect(response.statusCode).toBe(200);
+        expect(response.headers['content-type']).toBe('text/csv; charset=utf-8');
+        expect(response.headers['content-disposition']).toContain('attachment; filename="event_management_report.csv"');
+        expect(response.text).toContain('"event_name","description","location"');
+    });
+
+    it('should generate a PDF report for event management', async () => {
+        const response = await request(app)
+            .get('/reports/event-management')
+            .query({ format: 'pdf' });
+
+        expect(response.statusCode).toBe(200);
+        expect(response.headers['content-type']).toBe('application/pdf');
+        expect(response.headers['content-disposition']).toContain('attachment; filename="event_management_report.pdf"');
+    });
+
+    
+
+    it('should return a 400 error for an invalid format', async () => {
+        const response = await request(app)
+            .get('/reports/volunteer-activity')
+            .query({ format: 'invalid' })
+            .set('Cookie', [`token=${token}`]);
+
+        expect(response.statusCode).toBe(400);
+        expect(response.body.message).toBe('Invalid format specified');
+    });
+
+
+    it('should return a 400 error for an invalid format', async () => {
+        const response = await request(app)
+            .get('/reports/event-management')
+            .query({ format: 'invalid' })
+            .set('Cookie', [`token=${token}`]);
+
+        expect(response.statusCode).toBe(400);
+        expect(response.body.message).toBe('Invalid format specified');
+    });
+    
+});
