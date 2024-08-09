@@ -1,3 +1,9 @@
+## Contributors: Hoan Nhat Huynh, Elijah Miranda, Nicholas Hyuntae Kim
+**Link to previous repos to see contribution throughout development:**
+--https://github.com/huynhh21/COSC4353-Frontend
+--https://github.com/huynhh21/COSC4353-Backend
+--https://github.com/Elijah-24/final-project
+
 # Frontend Views Documentation
 
 This document provides an overview of the various frontend views for the project, including screenshots and brief descriptions.
@@ -59,5 +65,3 @@ This document provides an overview of the various frontend views for the project
   ![Generate Report](https://github.com/user-attachments/assets/89434013-3703-4b13-823c-8c42a105b3d2)
 
 ---
-
-Still working on test file, updated database schema with correct types and lengths.
