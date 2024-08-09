@@ -329,7 +329,7 @@ app.post('/events/create', (req, res) => {
     ];
     db.query(sql, [values], (err, data) => {
         if(err) return res.json("Error");
-        return res.json(data);
+        return res.json({ message: "Created new event", data });
     });
 });
 
