@@ -50,20 +50,20 @@ function UpdateUser() {
     };
 
     return (
-        <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-            <div className='w-50 bg-white rounded p-3'>
+        <div className='d-flex vh-100 bg-green justify-content-center align-items-center'>
+            <div className='w-50 custom-box rounded p-3'>
                 <form onSubmit={handleSubmit}>
                     <h2>Update User Login</h2>
                     <div className='mb-2'>
                         <label>Email</label>
-                        <input type="email" name="email" className='form-control'
+                        <input type="email" name="email" className='form-control custom-box'
                             value={userData.email || ''}
                             onChange={handleChange}
                         />
                     </div>
                     <div className='mb-2'>
                         <label>Password</label>
-                        <input type="password" name="password" className='form-control'
+                        <input type="password" name="password" className='form-control custom-box'
                             value={userData.password}
                             onChange={handleChange}
                             placeholder="Leave blank to keep current password"
