@@ -66,7 +66,7 @@ function StateDropdown({ value, onChange }) {
         <div className="form-group">
             <div className="w-50 p-3">
                 <h6>Select a State</h6>
-                <select className="form-select" value={value} onChange={onChange}>
+                <select className="form-select custom-box" value={value} onChange={onChange}>
                     {options.map(option => (
                         <option key={option.label} value={option.key}>{option.label}</option>
                     ))}
@@ -91,7 +91,9 @@ function SkillsDropDown({ selectedSkills, setSelectedSkills }){
         <div style={{width:"80%", display: "flex"}}>
             <div className="form-group">
                 <h6>Select Skills</h6>
-                <Multiselect options={options} displayValue="skill" selectedValues={selectedSkills} onSelect={setSelectedSkills} onRemove={setSelectedSkills}/>
+                <div className='custom-box'>
+                    <Multiselect options={options} displayValue="skill" selectedValues={selectedSkills} onSelect={setSelectedSkills} onRemove={setSelectedSkills}/>
+                </div>
             </div>
         </div>
     );
@@ -101,9 +103,9 @@ function CustomInput({ value, openCalendar }) {
     const displayValue = Array.isArray(value) ? value.map((date) => date.format("YYYY-MM-DD")).join(', ') : '';
     return(
         <div className="input-group">
-            <input type="text" className="form-control" value={displayValue} onClick={openCalendar} readOnly/>
+            <input type="text" className="form-control custom-box" value={displayValue} onClick={openCalendar} readOnly/>
             <div className="input-group-append">
-                <span className="input-group-text" onClick={openCalendar}>
+                <span className="input-group-text custom-box" onClick={openCalendar}>
                     <FaCalendarAlt/>
                 </span>
             </div>
@@ -181,38 +183,38 @@ function Management() {
     };
 
     return (
-      <div className="profile-management">
+      <div className="profile-management bg-green">
         <h2>Profile Management</h2>
         <form className="profile-form" onSubmit={handleSubmit}>
           <div className="form-group">
               <label>Full name:</label>
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} required maxLength="50" /> {/*50 characters, required*/}
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)} required maxLength="50" className="custom-box"/> {/*50 characters, required*/}
           </div>
   
           <div className="form-group">
               <label>Address 1:</label>
-              <input type="text" value={address1} onChange={(e) => setAddress1(e.target.value)} required maxLength="100" /> {/*100 characters, required*/}
+              <input type="text" value={address1} onChange={(e) => setAddress1(e.target.value)} required maxLength="100" className="custom-box" /> {/*100 characters, required*/}
           </div>
 
           <div className="form-group">
               <label>Address 2:</label>
-              <input type="text" value={address2} onChange={(e) => setAddress2(e.target.value)} maxLength="100" /> {/*100 characters, optional*/}
+              <input type="text" value={address2} onChange={(e) => setAddress2(e.target.value)} maxLength="100" className="custom-box" /> {/*100 characters, optional*/}
           </div>
 
           <div className="form-group">
               <label>City:</label>
-              <input type="text" value={city} onChange={(e) => setCity(e.target.value)} required maxLength="100" /> {/*100 characters, required*/}
+              <input type="text" value={city} onChange={(e) => setCity(e.target.value)} required maxLength="100" className="custom-box" /> {/*100 characters, required*/}
           </div>
 
 
           <div className="form-group">
               <label>State:</label>
-              <StateDropdown value={state} onChange={(e) => setState(e.target.value)} />  {/*Drop Down, selection required*/}
+              <StateDropdown value={state} onChange={(e) => setState(e.target.value)}/>  {/*Drop Down, selection required*/}
           </div>
 
           <div className="form-group">
               <label>Zipcode:</label>
-              <input type="text" value={zipcode} onChange={(e) => setZipcode(e.target.value)} required maxLength="9" /> {/*9 characters, at least 5-character code required*/}
+              <input type="text" value={zipcode} onChange={(e) => setZipcode(e.target.value)} required maxLength="9" className="custom-box" /> {/*9 characters, at least 5-character code required*/}
           </div>
 
           <div className="form-group">
@@ -222,13 +224,13 @@ function Management() {
 
           <div className="form-group">
             <label>Preferences:</label>
-            <textarea value={preferences} onChange={(e) => setPreferences(e.target.value)}></textarea> {/*Text area, optional*/}
+            <textarea value={preferences} onChange={(e) => setPreferences(e.target.value)} className="custom-box"></textarea> {/*Text area, optional*/}
           </div>
 
           <div className="form-group">
             <label>Availability:</label>
             <h6>Select dates</h6>
-            <DatePicker selectedDates={availability} setSelectedDates={setAvailability} />  {/*Date picker, multiple dates allowed, required*/}
+            <DatePicker selectedDates={availability} setSelectedDates={setAvailability} className="custom-box"/>  {/*Date picker, multiple dates allowed, required*/}
           </div>
 
           <button type="submit">Update Profile</button>
