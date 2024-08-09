@@ -94,6 +94,12 @@ app.post('/login', (req, res) => {
 });
 
 
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+
 app.post('/create', (req, res) => {
     const { name, email, password } = req.body;
     
@@ -101,6 +107,13 @@ app.post('/create', (req, res) => {
         if (err) {
             console.error('Transaction Error:', err);
             return res.json({ message: "Transaction Error" });
+        }
+        if (!name || !email || !password) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+    
+        if (!isValidEmail(email)) {
+            return res.status(400).json({ error: 'Invalid email format' });
         }
 
         const userProfileSql = "INSERT INTO userprofile (`full_name`) VALUES (?)";  // insert user profile info
@@ -534,9 +547,9 @@ const generatePDFReport = (data, res, fileName, template) => {
         });
     });
 };
+module.exports = app;
 
 app.listen(8081, () => {
     console.log("Server is running on port 8081...");
 });
 
-module.exports = app;
